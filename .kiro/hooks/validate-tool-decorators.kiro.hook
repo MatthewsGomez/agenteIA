@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Validar funciones @tool en tools.py",
+  "description": "Cuando se guarda tools.py, verifica que cada función decorada con @tool tenga docstring, type hints en parámetros y type hint de retorno. Muestra advertencias para las funciones que necesiten corrección.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "tools.py"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "El archivo tools.py acaba de ser guardado. Analiza el archivo y verifica que cada función decorada con @tool cumpla con los siguientes requisitos:\n1. Tiene un docstring con una descripción clara de lo que hace la función.\n2. Todos los parámetros tienen type hints.\n3. El valor de retorno tiene type hint.\n\nPara cada función que NO cumpla alguno de estos requisitos, muestra una advertencia clara indicando:\n- El nombre de la función\n- Qué requisito(s) le falta(n)\n\nSi todas las funciones cumplen los requisitos, confirma que tools.py está correctamente documentado."
+  }
+}

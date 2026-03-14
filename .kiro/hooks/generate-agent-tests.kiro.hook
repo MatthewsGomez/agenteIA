@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Generate Agent Tests on Save",
+  "description": "Cuando se guarda agent.py, genera o actualiza test_agent.py con pruebas unitarias para cada herramienta usando pytest, verificando tipos de retorno y manejo de inputs inválidos.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "agent.py"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "El archivo agent.py acaba de ser guardado. Analiza agent.py y tools.py para identificar todas las herramientas definidas. Luego genera o actualiza el archivo test_agent.py con pruebas unitarias usando pytest para cada herramienta. Las pruebas deben: 1) Verificar que cada herramienta devuelve el tipo de dato correcto, 2) Manejar correctamente inputs inválidos (valores nulos, tipos incorrectos, valores fuera de rango), 3) Seguir las convenciones de pytest con funciones test_ y fixtures cuando sea necesario."
+  }
+}
